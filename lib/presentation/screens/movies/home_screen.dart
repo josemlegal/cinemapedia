@@ -2,6 +2,7 @@ import 'package:cinemapedia/presentation/providers/movies/movies_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/movies_providers.dart';
 import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -34,16 +35,14 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    // final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    final slideShowMovies = ref.watch(moviesSlideShowProvider);
 
-    if (nowPlayingMovies.isEmpty) {
-      return const CircularProgressIndicator();
-    }
     return Column(
       children: [
         const CustomAppBar(),
         MoviesSlideShow(
-          movies: nowPlayingMovies,
+          movies: slideShowMovies,
         )
       ],
     );
