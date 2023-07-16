@@ -2,7 +2,8 @@ import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:riverpod/riverpod.dart';
 
-final movieInfoProvider = StateNotifierProvider((ref) {
+final movieInfoProvider =
+    StateNotifierProvider<MovieMapNotifier, Map<String, Movie>>((ref) {
   final movieRepository = ref.watch(movieRepositoryProvider);
 
   return MovieMapNotifier(getMovie: movieRepository.getMovieById);
@@ -19,6 +20,7 @@ class MovieMapNotifier extends StateNotifier<Map<String, Movie>> {
 
   Future<void> loadMovie(String movieId) async {
     if (state[movieId] != null) return;
+    print('Realizando llamada a la API');
 
     final movie = await getMovie(movieId);
 
