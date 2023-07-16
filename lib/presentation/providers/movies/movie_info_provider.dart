@@ -20,7 +20,6 @@ class MovieMapNotifier extends StateNotifier<Map<String, Movie>> {
 
   Future<void> loadMovie(String movieId) async {
     if (state[movieId] != null) return;
-    print('Realizando llamada a la API');
 
     final movie = await getMovie(movieId);
 
