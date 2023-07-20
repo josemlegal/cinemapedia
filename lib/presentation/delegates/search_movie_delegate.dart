@@ -72,7 +72,7 @@ class _MovieItem extends StatelessWidget {
           SizedBox(
             width: size.width * 0.2,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(15.0),
               child: Image.network(
                 movie.posterPath,
                 loadingBuilder: (context, child, loadingProgress) =>
