@@ -5,7 +5,7 @@ final appRouter = GoRouter(
   initialLocation: '/home/0',
   routes: [
     GoRoute(
-        path: '/home:page',
+        path: '/home/:page',
         name: HomeScreen.name,
         builder: (context, state) {
           final pageIndex = state.pathParameters['page'] ?? '0';
@@ -21,5 +21,9 @@ final appRouter = GoRouter(
             },
           ),
         ]),
+    GoRoute(
+      path: '/',
+      redirect: (_, __) => '/home/0',
+    )
   ],
 );
