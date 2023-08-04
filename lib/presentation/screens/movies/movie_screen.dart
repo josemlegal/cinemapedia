@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/presentation/providers/actors/actors_by_movie_provider.dart';
@@ -200,9 +202,13 @@ class _CustomSliverAppBar extends ConsumerWidget {
       actions: [
         IconButton(
           onPressed: () async {
-            ref.read(localStorageRepositoryProvider).toggleFavorite(movie);
+            await ref
+                .watch(localStorageRepositoryProvider)
+                .toggleFavorite(movie);
+            log(isFavoriteFuture.toString());
             await Future.delayed(const Duration(milliseconds: 100));
             ref.invalidate(isFavoriteProvider(movie.id));
+            log(isFavoriteFuture.toString());
           },
           icon: isFavoriteFuture.when(
             loading: () => const CircularProgressIndicator(strokeWidth: 2),

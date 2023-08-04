@@ -4,8 +4,8 @@ import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = 'home-screen';
-  final int pageIndex;
   const HomeScreen({super.key, required this.pageIndex});
+  final int pageIndex;
 
   final viewRoutes = const <Widget>[
     HomeView(),
