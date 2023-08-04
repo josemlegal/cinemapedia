@@ -20,6 +20,7 @@ class FullScreenLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('Loading...'),
           const SizedBox(height: 10),
